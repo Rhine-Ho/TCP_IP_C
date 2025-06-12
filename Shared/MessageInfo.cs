@@ -39,7 +39,8 @@ namespace Shared
                 // FileContent 已經是原始位元組，直接轉 Base64 即可，不需要重複轉換
                 dataPart = Convert.ToBase64String(FileContent ?? Array.Empty<byte>());
             }
-            return $"{MessageId}|{Sender}|{Type}|{FileName ?? ""}|{Time}|{dataPart}";
+            //可正常顯示中文
+            return $"{MessageId}|{Sender}|{Type}|{(FileName == null ? "" : Convert.ToBase64String(Encoding.UTF8.GetBytes(FileName)))}|{Time}|{dataPart}";
         }
         // 由儲存字串還原
         public static MessageInfo Parse(string line)
@@ -53,7 +54,8 @@ namespace Shared
                 MessageId = Guid.TryParse(parts[0], out var id) ? id : Guid.NewGuid(),
                 Sender = parts[1],
                 Type = parts[2],
-                FileName = string.IsNullOrEmpty(parts[3]) ? null : parts[3],
+                //可正常顯示中文
+                FileName = string.IsNullOrEmpty(parts[3]) ? null : Encoding.UTF8.GetString(Convert.FromBase64String(parts[3])),
                 Time = parts[4]
             };
 

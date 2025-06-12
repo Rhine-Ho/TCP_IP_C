@@ -46,6 +46,7 @@
             MenuItemOpt = new ToolStripMenuItem();
             MenuItemTxt = new ToolStripMenuItem();
             MenuItemPic = new ToolStripMenuItem();
+            MenuItemMedia = new ToolStripMenuItem();
             richTextBox2 = new RichTextBox();
             label4 = new Label();
             pictureBox1 = new PictureBox();
@@ -59,7 +60,7 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            richTextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             richTextBox1.Location = new Point(490, 123);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(393, 337);
@@ -172,7 +173,7 @@
             // 
             // MenuItemOpt
             // 
-            MenuItemOpt.DropDownItems.AddRange(new ToolStripItem[] { MenuItemTxt, MenuItemPic });
+            MenuItemOpt.DropDownItems.AddRange(new ToolStripItem[] { MenuItemTxt, MenuItemPic, MenuItemMedia });
             MenuItemOpt.Name = "MenuItemOpt";
             MenuItemOpt.Size = new Size(43, 20);
             MenuItemOpt.Text = "功能";
@@ -180,16 +181,23 @@
             // MenuItemTxt
             // 
             MenuItemTxt.Name = "MenuItemTxt";
-            MenuItemTxt.Size = new Size(134, 22);
+            MenuItemTxt.Size = new Size(180, 22);
             MenuItemTxt.Text = "傳送文字檔";
             MenuItemTxt.Click += MenuItemTxt_Click;
             // 
             // MenuItemPic
             // 
             MenuItemPic.Name = "MenuItemPic";
-            MenuItemPic.Size = new Size(134, 22);
+            MenuItemPic.Size = new Size(180, 22);
             MenuItemPic.Text = "傳送圖片";
             MenuItemPic.Click += MenuItemPic_Click;
+            // 
+            // MenuItemMedia
+            // 
+            MenuItemMedia.Name = "MenuItemMedia";
+            MenuItemMedia.Size = new Size(180, 22);
+            MenuItemMedia.Text = "傳送影音";
+            MenuItemMedia.Click += MenuItemMedia_Click;
             // 
             // richTextBox2
             // 
@@ -312,5 +320,6 @@
         private Button btnHi;
         private Button btnBye;
         private Button btnOMG;
+        private ToolStripMenuItem MenuItemMedia;
     }
 }

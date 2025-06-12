@@ -65,7 +65,7 @@ namespace Client
             // 輪轉文字：移除第一個字，加到後面
             loginMarqueeText = loginMarqueeText.Substring(1) + loginMarqueeText[0];
             label3.Text = loginMarqueeText;
-        }        
+        }
         public void ReceiveMessage()
         {
             try
@@ -406,7 +406,7 @@ namespace Client
                     catch { /* 忽略關閉連線時可能發生的例外 */ }
                 }
             }
-        }        
+        }
         // 傳送訊息按鈕事件
         private void button3_Click(object sender, EventArgs e)
         {
@@ -591,6 +591,13 @@ namespace Client
                     this.Close();
                 }
             }
+        }
+
+        private void MenuItemMedia_Click(object sender, EventArgs e)
+        {
+            if (client == null || !client.Connected) return;
+            // 支援 mp4, mp3, avi, mov, wav, wma 等常見影音格式
+            Shared.FileTransferHelper.SendFileWithDialog(client.GetStream(), "影音檔|*.mp4;*.mp3;*.avi;*.mov;*.wav;*.wma|所有檔案|*.*", "FILE", currentUser, msg => richTextBox1.AppendText(msg));
         }
     }
 }
